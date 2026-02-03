@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { GraduationCap, Briefcase, Calendar } from "lucide-react";
 
 const Experience = () => {
   const education = [
@@ -20,38 +21,26 @@ const Experience = () => {
       institution: "Macmaine School of Computers",
       description: "Completed 10 full computer science courses including core courses and specialized electives.",
     },
-    {
-      period: "2000 - 2002",
-      title: "Certification in Information Design",
-      institution: "Global Computer Links",
-      description: "Foundation in computing principles and mathematical concepts required for computer science.",
-    },
   ];
 
   const experience = [
     {
-      period: "2016 - 2018",
-      title: "Web Development & IT Consulting",
+      period: "2016 - Present",
+      title: "Senior Full Stack Developer",
       company: "Freelance / Various Companies",
-      description: "Remote collaboration, building dynamic web apps with React and Rails. Led successful group projects showcasing frontend and backend skills.",
+      description: "Building dynamic web apps with React and Rails. Leading group projects showcasing frontend and backend expertise.",
     },
     {
       period: "2014 - 2016",
-      title: "Hardware and Web Development",
+      title: "Hardware and Web Development Lead",
       company: "Hands-On Computers, Harare",
-      description: "Created Web Development Department, worked on company website, started a dedicated customer response team.",
+      description: "Created Web Development Department, developed company website, and established customer response team.",
     },
     {
       period: "2012 - 2014",
-      title: "Computer Hardware Technician",
+      title: "IT Specialist & Technician",
       company: "Global Computer Links, Harare",
-      description: "Computer assembly for local brand, worked with schools building custom PCs. Experienced with Windows, Unix, Linux, and Mac OS.",
-    },
-    {
-      period: "2004",
-      title: "Filing and Data Capturing (Intern)",
-      company: "National Foods (Tiger Brands)",
-      description: "Introduced internal mailing system and gained experience in corporate IT operations.",
+      description: "Computer assembly and custom PC building for schools. Expert in Windows, Unix, Linux, and Mac OS.",
     },
   ];
 
@@ -63,33 +52,46 @@ const Experience = () => {
     company?: string;
   };
 
-  const TimelineItem = ({ item, index, isEducation }: { item: TimelineItemType; index: number; isEducation?: boolean }) => (
+  const TimelineCard = ({ item, index, isEducation }: { item: TimelineItemType; index: number; isEducation?: boolean }) => (
     <motion.div
       initial={{ opacity: 0, x: isEducation ? -30 : 30 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="relative pl-8 pb-8 border-l-2 border-border last:pb-0"
+      transition={{ duration: 0.5, delay: index * 0.15 }}
+      className="relative group"
     >
-      {/* Timeline dot */}
-      <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-primary glow-sm" />
-      
-      {/* Period badge */}
-      <span className="inline-block text-xs font-medium text-primary bg-primary/10 px-3 py-1 rounded-full mb-2">
-        {item.period}
-      </span>
-      
-      <h4 className="font-heading text-lg font-semibold mb-1">{item.title}</h4>
-      <p className="text-sm text-primary mb-2">
-        {item.institution || item.company}
-      </p>
-      <p className="text-sm text-muted-foreground">{item.description}</p>
+      <div className="glass rounded-2xl p-6 border border-border group-hover:border-primary/30 transition-all duration-300 card-hover">
+        {/* Period badge */}
+        <div className="flex items-center gap-2 mb-4">
+          <Calendar className="w-4 h-4 text-primary" />
+          <span className="text-sm font-medium text-primary">{item.period}</span>
+        </div>
+        
+        <h4 className="font-heading text-lg font-bold mb-1 group-hover:text-primary transition-colors">
+          {item.title}
+        </h4>
+        <p className="text-sm text-muted-foreground mb-3 flex items-center gap-2">
+          {isEducation ? <GraduationCap className="w-4 h-4" /> : <Briefcase className="w-4 h-4" />}
+          {item.institution || item.company}
+        </p>
+        <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+        
+        {/* Decorative corner */}
+        <div className="absolute top-0 right-0 w-16 h-16 overflow-hidden rounded-tr-2xl">
+          <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-bl from-primary/10 to-transparent" />
+        </div>
+      </div>
     </motion.div>
   );
 
   return (
-    <section id="experience" className="py-24 bg-card/30">
-      <div className="section-container">
+    <section id="experience" className="py-24 relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-card/50 via-background to-card/50" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px]" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px]" />
+      
+      <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -97,47 +99,58 @@ const Experience = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-            Experience & Education
+          <span className="text-primary font-medium tracking-wider uppercase text-sm">My Journey</span>
+          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mt-2 mb-4">
+            Experience & <span className="gradient-text">Education</span>
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             My journey in technology spanning over two decades of learning and professional growth
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
+        <div className="grid lg:grid-cols-2 gap-12">
           {/* Education */}
           <div>
-            <motion.h3
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="font-heading text-xl font-semibold mb-8 flex items-center gap-3"
+              className="flex items-center gap-4 mb-8"
             >
-              <span className="w-8 h-0.5 bg-primary" />
-              Education
-            </motion.h3>
-            <div>
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <GraduationCap className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-heading text-xl font-bold">Education</h3>
+                <p className="text-sm text-muted-foreground">Academic Background</p>
+              </div>
+            </motion.div>
+            <div className="space-y-4">
               {education.map((item, index) => (
-                <TimelineItem key={index} item={item} index={index} isEducation />
+                <TimelineCard key={index} item={item} index={index} isEducation />
               ))}
             </div>
           </div>
 
           {/* Work Experience */}
           <div>
-            <motion.h3
+            <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="font-heading text-xl font-semibold mb-8 flex items-center gap-3"
+              className="flex items-center gap-4 mb-8"
             >
-              <span className="w-8 h-0.5 bg-primary" />
-              Work Experience
-            </motion.h3>
-            <div>
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                <Briefcase className="w-6 h-6 text-primary" />
+              </div>
+              <div>
+                <h3 className="font-heading text-xl font-bold">Work Experience</h3>
+                <p className="text-sm text-muted-foreground">Professional Career</p>
+              </div>
+            </motion.div>
+            <div className="space-y-4">
               {experience.map((item, index) => (
-                <TimelineItem key={index} item={item} index={index} />
+                <TimelineCard key={index} item={item} index={index} />
               ))}
             </div>
           </div>
