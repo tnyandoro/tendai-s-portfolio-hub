@@ -1,6 +1,15 @@
 import { motion } from "framer-motion";
-import { MapPin, Briefcase, Globe, Mail, Code2, Coffee, Gamepad2, Dumbbell } from "lucide-react";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import {
+  MapPin,
+  Briefcase,
+  Globe,
+  Mail,
+  Code2,
+  Coffee,
+  Gamepad2,
+  Dumbbell,
+} from "lucide-react";
+import profilePhoto from "@/assets/profile-photo1.jpg";
 
 const About = () => {
   const details = [
@@ -24,7 +33,7 @@ const About = () => {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[80px]" />
       </div>
-      
+
       <div className="section-container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -33,7 +42,9 @@ const About = () => {
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
-          <span className="text-primary font-medium tracking-wider uppercase text-sm">Get to know me</span>
+          <span className="text-primary font-medium tracking-wider uppercase text-sm">
+            Get to know me
+          </span>
           <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold mt-2">
             About <span className="gradient-text">Me</span>
           </h2>
@@ -52,7 +63,7 @@ const About = () => {
               {/* Decorative elements */}
               <div className="absolute -top-4 -left-4 w-24 h-24 border-l-4 border-t-4 border-primary rounded-tl-3xl" />
               <div className="absolute -bottom-4 -right-4 w-24 h-24 border-r-4 border-b-4 border-primary rounded-br-3xl" />
-              
+
               {/* Main image */}
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden glass p-2">
                 <img
@@ -60,7 +71,7 @@ const About = () => {
                   alt="Tendai Nyandoro"
                   className="w-full h-full object-cover rounded-xl"
                 />
-                
+
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent rounded-xl" />
               </div>
@@ -74,7 +85,9 @@ const About = () => {
                 className="absolute -right-6 top-1/4 glass rounded-2xl p-4 border border-primary/20"
               >
                 <p className="text-3xl font-bold gradient-text">15+</p>
-                <p className="text-xs text-muted-foreground">Years Experience</p>
+                <p className="text-xs text-muted-foreground">
+                  Years Experience
+                </p>
               </motion.div>
 
               {/* Projects badge */}
@@ -101,13 +114,15 @@ const About = () => {
             <h3 className="font-heading text-2xl sm:text-3xl font-semibold mb-2">
               Hi, I'm <span className="text-primary">Tendai Nyandoro</span>
             </h3>
-            <p className="text-lg text-muted-foreground mb-6">Professional FullStack Developer</p>
+            <p className="text-lg text-muted-foreground mb-6">
+              Professional FullStack Developer
+            </p>
 
             {/* Details grid */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               {details.map((detail, index) => (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -118,7 +133,9 @@ const About = () => {
                     <detail.icon className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-[10px] text-muted-foreground uppercase tracking-wide">{detail.label}</p>
+                    <p className="text-[10px] text-muted-foreground uppercase tracking-wide">
+                      {detail.label}
+                    </p>
                     <p className="text-sm font-medium">{detail.value}</p>
                   </div>
                 </motion.div>
@@ -128,20 +145,26 @@ const About = () => {
             {/* Bio */}
             <div className="space-y-4 mb-8">
               <p className="text-muted-foreground leading-relaxed">
-                I solve social and business problems through software. Having worked in and with 
-                multinational companies in multiple roles, I have acquired great technical and 
-                professional skills over <span className="text-primary font-medium">15+ years</span> in the industry.
+                I solve social and business problems through software. Having
+                worked in and with multinational companies in multiple roles, I
+                have acquired great technical and professional skills over{" "}
+                <span className="text-primary font-medium">15+ years</span> in
+                the industry.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                I attended <span className="text-primary font-medium">Microverse</span>, an online coding school, 
-                to master Full Stack Development—from technical skills (Ruby on Rails, React, JavaScript) 
-                to soft skills (Pair Programming, Team Collaboration).
+                I attended{" "}
+                <span className="text-primary font-medium">Microverse</span>, an
+                online coding school, to master Full Stack Development—from
+                technical skills (Ruby on Rails, React, JavaScript) to soft
+                skills (Pair Programming, Team Collaboration).
               </p>
             </div>
 
             {/* Interests */}
             <div>
-              <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-3">Interests</h4>
+              <h4 className="text-sm font-medium text-muted-foreground uppercase tracking-wide mb-3">
+                Interests
+              </h4>
               <div className="flex flex-wrap gap-3">
                 {interests.map((interest, index) => (
                   <motion.div
